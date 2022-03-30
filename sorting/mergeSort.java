@@ -51,3 +51,45 @@ public class MatrixMultiplication {
         arr[j]=temp;
     }
 }
+
+
+
+
+
+
+// 2ND METH
+public static int[] implementMergeSort(int arr[], int low, int high)
+    {
+        if (low < high) // atleast we have two elements in array
+        {
+            int mid = (low + high) / 2;
+            implementMergeSort(arr, low, mid);
+            implementMergeSort(arr, mid + 1, high);
+            merge(arr, mid, low, high);
+        }
+        return arr;
+    }
+ public static void merge(int[] arr, int mid, int low, int high) {
+       int temp[]=new int[high-low+1];
+       int i=low;
+       int j=mid+1;
+       int k=0;
+       while (i<=mid && j<=high){
+           if(arr[i]<arr[j]){
+               temp[k]=arr[i]; i++;
+           }else{
+               temp[k]=arr[j]; j++;
+           }
+           k++;
+       }
+       while (i<=mid){
+           temp[k]=arr[i]; i++; k++;
+       }
+       while (j<=high){
+           temp[k]=arr[j]; j++; k++;
+       }
+       k=0;
+       for (int z=low;z<=high;z++){
+           arr[z]=temp[k]; k++;
+        }
+    }
